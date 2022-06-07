@@ -18,7 +18,7 @@ interface DemandRepository: CrudRepository<Demand, Long> {
 
 //    @Query("SELECT d.id, d.tcin, d.store, d.category, d.status FROM demand d")
     @Query(value = "SELECT * FROM demand where category = :category AND status = :status ", nativeQuery = true)
-    fun getDemandsGroupByTcin(category: String, status: String): MutableIterable<Demand> {
+    fun getDemandsUsingQuery(category: String, status: String): MutableIterable<Demand> {
         TODO(reason = "Custom")
     }
 }

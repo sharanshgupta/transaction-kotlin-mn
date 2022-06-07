@@ -23,7 +23,7 @@ class DemandRepositoryService {
         return demandRepository.findByCategoryAndStatus(category, "CREATED")
     }
 
-    fun getDemandsGroupByTcin(category: String): MutableIterable<Demand> {
-        return demandRepository.getDemandsGroupByTcin(category, "CREATED")
+    fun getDemandsUsingQuery(category: String): MutableIterable<Demand> {
+        return demandRepository.getDemandsUsingQuery(category, "CREATED")
     }
 }

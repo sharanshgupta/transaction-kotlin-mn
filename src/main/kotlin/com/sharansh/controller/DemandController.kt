@@ -31,8 +31,8 @@ class DemandController {
 
     @Get(value = "/demand/group/{category}")
     @Produces(MediaType.APPLICATION_JSON)
-    fun getDemandsByCategoryGroupByTcin(@PathVariable(name = "category") category: String): MutableIterable<Demand> {
+    fun getDemandsUsingQuery(@PathVariable(name = "category") category: String): MutableIterable<Demand> {
         println("Request received for demands with category $category")
-        return demandRepositoryService.getDemandsGroupByTcin(category)
+        return demandRepositoryService.getDemandsUsingQuery(category)
     }
 }
