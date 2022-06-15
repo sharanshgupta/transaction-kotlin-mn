@@ -2,10 +2,12 @@ package com.sharansh.controller
 
 import com.sharansh.domain.Demand
 import com.sharansh.service.DemandRepositoryService
+import com.sharansh.service.ProducerService
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.PathVariable
+import io.micronaut.http.annotation.Post
 import io.micronaut.http.annotation.Produces
 import jakarta.inject.Inject
 
@@ -14,6 +16,9 @@ class DemandController {
 
     @Inject
     lateinit var demandRepositoryService: DemandRepositoryService
+
+    @Inject
+    lateinit var producerService: ProducerService
 
     @Get(value = "/demands")
     @Produces(MediaType.APPLICATION_JSON)
@@ -34,5 +39,12 @@ class DemandController {
     fun getDemandsUsingQuery(@PathVariable(name = "category") category: String): MutableIterable<Demand> {
         println("Request received for demands with category $category")
         return demandRepositoryService.getDemandsUsingQuery(category)
+    }
+
+    @Post(value = "/send")
+    @Produces(MediaType.APPLICATION_JSON)
+    fun sendMessage() {
+//        producerService.sendMessage("Hello")
+        producerService.sendMessage("Hello")
     }
 }
